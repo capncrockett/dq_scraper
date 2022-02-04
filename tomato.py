@@ -5,6 +5,19 @@ response = requests.get('https://editorial.rottentomatoes.com/guide/2021-best-mo
 content = response.content
 soup = BeautifulSoup(content, 'html.parser')
 
+
+# This is it! It needs the full path of selectors. Returns ResultSet, thus needs index.
+number_10 = soup.select('body #row-index-10 h2 a')[0].text
+# print(number_10)
+
+
+for i in range(5):
+    movie_title = soup.select(f"body #row-index-{i + 1} h2 a")[0].text
+    print(movie_title)
+
+
+# EVERYTHIING BELOW IF FOR REFERENCE
+
 # Find the number one movie
 # movie = soup.select('#row-index-1')
 # print(type(movie))
@@ -77,25 +90,18 @@ tom_score = soup.select("[class~=tMeterScore]")[:-6:-1]
 
 # Find tags by ID:
 row_index_10 = soup.select("#row-index-10")
-print(row_index_10)
+# print(row_index_10)
 
+# I guess you can also specify the target tag.
+number_10_row = soup.select("div#row-index-10")
+# print(number_10_row)
 
-# soup.select("a#link2")
+# Find tags that match any selector from a list of selectors:
+rows_10_and_20 = soup.select("#row-index-10,#row-index-20")
+# print(rows_10_and_20)
 
-# movie_n = soup.select("id:nth-of-type(3)")
-# print(movie_n)
-
-
-
-
-
-
-
-
-
-
-
-
+title_10 = soup.select("#row-index-10 a:nth-of-type(3)")
+# print(title_10)
 
 
 
