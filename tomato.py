@@ -16,7 +16,7 @@ for i in range(5):
     print(movie_title)
 
 
-# EVERYTHIING BELOW IF FOR REFERENCE
+# EVERYTHIING BELOW IS FOR REFERENCE
 
 # Find the number one movie
 # movie = soup.select('#row-index-1')
